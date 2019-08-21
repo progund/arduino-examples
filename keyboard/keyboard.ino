@@ -33,7 +33,8 @@ int button_Enter = 13;
  * 
  * void setup()
  * 
- * Sets up the hardware 
+ * description:
+ *  Sets up the hardware 
  * 
  ***********************************************************/
 void setup() {
@@ -69,6 +70,9 @@ void setup() {
  * return:
  *   int - 1 if button is pressed, 0 otherwise
  * 
+ * description:
+ *  reads and returns the INPUT pin value
+ * 
  ***********************************************************/
 int read_button(int button) {
 
@@ -88,6 +92,10 @@ int read_button(int button) {
  *   led     - the led to lit if button is pressed
  *   character - the character to send to the computer connected via USB
  * 
+ * description:
+ *  if the button is pressed the led is lit and the character is sent via USB
+ *  if the button is not pressed, nothing is done
+ *
  ***********************************************************/
 void handle_button(int button, int led, int character) {
  /*
