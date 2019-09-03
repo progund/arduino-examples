@@ -274,6 +274,7 @@ void handle_control_button() {
       } else if ( control_state == STATE_SHOW_RES ) {
         control_state = STATE_ENTER_OP1;
         blink_all(2);
+        digitalWrite(status_led, LOW);
       }
 
       
