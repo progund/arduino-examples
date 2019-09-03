@@ -1,6 +1,6 @@
 /*
 
-    keyboard.ino - use button to send keys via USB
+    calculator.ino - use button and leds to calculate +
 
     This code is written with some pedagogical concerns in mind.
     The code is not in any way written to be optimal or flexible.
@@ -38,6 +38,7 @@ led_button led_buttons[] = {
 int nr_led_buttons;
 const int timeout = 10;  //ms
 const int control_led = 50;
+const int status_led = 52;
 const int control_button = 51;
 int control_state = STATE_ENTER_OP1;
 
@@ -60,6 +61,7 @@ void setup() {
   // Setup control
   pinMode(control_button, INPUT);
   pinMode(control_led, OUTPUT);
+  pinMode(status_led, OUTPUT);
   
   // Setup Serial
   pinMode(13, OUTPUT);
@@ -85,6 +87,7 @@ void reset_buttons(int blink) {
       digitalWrite(lb->led, LOW);
     }
   }
+  digitalWrite(status_led, LOW);
 }
 
 
@@ -212,6 +215,10 @@ int read_led_buttons() {
 void show_result(int res) {
   int i;
   int mult = 1;
+
+  if ( res > 127 ) {
+     digitalWrite(status_led, HIGH );   
+  }
 
   Serial.print("result: ");
 
